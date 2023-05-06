@@ -1,0 +1,14 @@
+{
+  "accentColor": "#52bc77",
+  "cssTheme": "Dark Moss",
+  "theme": "obsidian",
+  "translucency": false,
+  "nativeMenus": false,
+  "enabledCssSnippets": [
+    "dashboard",
+    "columns",
+    "center_image"
+  ],
+  "baseFontSize": 19,
+  "showViewHeader": true
+}

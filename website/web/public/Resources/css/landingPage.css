@@ -1,0 +1,30 @@
+.project_server {
+    margin-top: 50px;
+}
+
+.project_cool {
+    color: aqua;
+}
+
+.project_server,
+.project_cool {
+    display: inline-block;
+}
+
+.project_info {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    font-size: 25px;
+
+}
+
+/* Resize button to fit form */
+.login-button {
+    width: 450px;
+    height: 50px;
+    font-size: 20px;
+}
+
+h1 {
+    font-size: 60px;
+}

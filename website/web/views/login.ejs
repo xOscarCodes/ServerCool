@@ -1,0 +1,95 @@
+<link rel="stylesheet" href="/Resources/css/login-signup.css" class="src">
+<div class="container" id="container">
+    <div class="form-container sign-up-container">
+        <form action="/users/register" method="POST">
+            <h1 style="color: rgb(0, 0, 0);">Create Account</h1>
+            <span>Use your email for registration</span>
+            <input type="name" id="Name" name="name" placeholder="Name" value="<%=
+                typeof name !=
+                'undefined' ? name : '' %>"
+            />
+            <input type="email" id="email2" name="email" placeholder="Email"
+                value="<%= typeof email !=
+                'undefined' ? email : '' %>"
+            />
+            <input type="password" id="password" name="password"
+                placeholder="Password" value="<%= typeof
+                password != 'undefined' ? password : '' %>" />
+            <input type="password" name="password2" id="password2"
+                placeholder="Confirm Password" value="<%=
+                typeof password2 != 'undefined' ? password2 : '' %>"
+            />
+            <br><br>
+            <p style="font: 1em sans-serif; color: red;"><%= include
+                    ("./partials/messages"); %></p>
+                <br>
+                <button type="submit">Sign Up</button>
+            </form>
+        </div>
+        <div class="form-container sign-in-container">
+            <form action="/users/login" method="POST">
+                <h1 style="color: black;">Sign in</h1>
+                <span>Use your email to login</span>
+                <input type="email" name="email" id="email21"
+                    placeholder="Email" />
+                <input type="password" name="password" id="pswd"
+                    placeholder="Password" />
+                <!-- <a href="#">Forgot your password?</a> -->
+                <br><br>
+                <p style="font: 1em sans-serif; color: red;"><%= include
+                        ("./partials/messages"); %></p>
+                    <br>
+                    <button id="logger" type="submit">Sign In</button>
+                </form>
+            </div>
+            <div class="overlay-container">
+                <div class="overlay">
+                    <div class="overlay-panel overlay-left">
+                        <h1>Welcome Back!</h1>
+                        <p>Pease login with your personal info</p>
+                        <button class="ghost" id="signIn">Sign In</button>
+                    </div>
+                    <div class="overlay-panel overlay-right">
+                        <h1>Hello, User!</h1>
+                        <p>Enter your personal details to get started</p>
+                        <button class="ghost" id="signUp">Sign Up</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <script>
+    const signUpButton = document.getElementById('signUp');
+const signInButton = document.getElementById('signIn');
+const container = document.getElementById('container');
+ const loginedButton = document.getElementById('logger');
+// const signedUpButton = document.getElementById('');
+signUpButton.addEventListener('click', () => {
+    container.classList.add("right-panel-active");
+});
+
+signInButton.addEventListener('click', () => {
+    container.classList.remove("right-panel-active");
+});
+
+loginedButton.addEventListener('click', async() => {
+    await fetch('/users/me')
+  .then(res => {
+    if (res.status === 401) {
+      throw new Error('Not authenticated');
+    }
+    return res.json();
+  })
+  .then(user => {
+    // Use user data
+    let message = `logs in.`
+                    userName = user[0].name;
+                    userId = user[0]._id;
+                    let body2 = {
+                        userName, userId, message
+                    }
+                    $.post("http://localhost:5000/api/audit", body2);
+  });
+});
+
+</script>

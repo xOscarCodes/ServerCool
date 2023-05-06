@@ -1,0 +1,25 @@
+{
+    "nodes": [
+        {
+            "_id": 1,
+            "location": "Edison",
+            "acTemp": 17,
+            "roomTemp": 23,
+            "status": true
+        },
+        {
+            "_id": 2,
+            "location": "Turing",
+            "acTemp": 19,
+            "roomTemp": 21,
+            "status": false
+        },
+        {
+            "_id": 3,
+            "location": "Picasso",
+            "acTemp": 23,
+            "roomTemp": 21,
+            "status": true
+        }
+    ]
+}

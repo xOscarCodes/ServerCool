@@ -1,0 +1,107 @@
+{
+  "collapse-filter": true,
+  "search": "",
+  "showTags": true,
+  "showAttachments": false,
+  "hideUnresolved": false,
+  "showOrphans": true,
+  "collapse-color-groups": true,
+  "colorGroups": [
+    {
+      "query": "tag:#CPTS-Path",
+      "color": {
+        "a": 1,
+        "rgb": 16320055
+      }
+    },
+    {
+      "query": "tag:#Linux-Machines",
+      "color": {
+        "a": 1,
+        "rgb": 10481408
+      }
+    },
+    {
+      "query": "tag:#Windows-Machines",
+      "color": {
+        "a": 1,
+        "rgb": 30934
+      }
+    },
+    {
+      "query": "tag:#Pentest",
+      "color": {
+        "a": 1,
+        "rgb": 9187071
+      }
+    },
+    {
+      "query": "path:\"Fundamentals/Linux Fundamentals\"",
+      "color": {
+        "a": 1,
+        "rgb": 10646545
+      }
+    },
+    {
+      "query": "path:\"Fundamentals/Intro to Bash Scripting\"",
+      "color": {
+        "a": 1,
+        "rgb": 295057
+      }
+    },
+    {
+      "query": "path:\"Fundamentals/Intro to Networking\"",
+      "color": {
+        "a": 1,
+        "rgb": 5065186
+      }
+    },
+    {
+      "query": "tag:#Cheatsheet",
+      "color": {
+        "a": 1,
+        "rgb": 10903134
+      }
+    },
+    {
+      "query": "tag:#Linux",
+      "color": {
+        "a": 1,
+        "rgb": 0
+      }
+    },
+    {
+      "query": "file:Fundamentals",
+      "color": {
+        "a": 1,
+        "rgb": 5187498
+      }
+    },
+    {
+      "query": "tag:#Research",
+      "color": {
+        "a": 1,
+        "rgb": 16755200
+      }
+    },
+    {
+      "query": "tag:#Software-Engineering",
+      "color": {
+        "a": 1,
+        "rgb": 9055850
+      }
+    }
+  ],
+  "collapse-display": true,
+  "showArrow": true,
+  "textFadeMultiplier": -0.2,
+  "nodeSizeMultiplier": 0.929427083333333,
+  "lineSizeMultiplier": 1,
+  "collapse-forces": true,
+  "centerStrength": 0.518713248970312,
+  "repelStrength": 10,
+  "linkStrength": 1,
+  "linkDistance": 250,
+  "scale": 0.3823010968770025,
+  "close": true
+}

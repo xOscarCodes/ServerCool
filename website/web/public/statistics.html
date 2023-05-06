@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Statistics</title>
+        <script src="https://code.jquery.com/jquery-3.6.3.min.js"
+            integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
+            crossorigin="anonymous"></script>
+        <link rel="icon" type="image/x-icon" href="/Resources/images/Logo.ico">
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+            crossorigin="anonymous">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Roboto+Mono:wght@500&display=swap"
+            rel="stylesheet">
+        <!-- Include Highcharts library -->
+        <script src="https://code.highcharts.com/highcharts.js"></script>
+        <script src="https://code.highcharts.com/modules/exporting.js"></script>
+        <script src="https://code.highcharts.com/modules/export-data.js"></script>
+        <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+        <script src="https://code.highcharts.com/highcharts-more.js"></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"
+            integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE"
+            crossorigin="anonymous"></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js"
+            integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ"
+            crossorigin="anonymous"></script>
+
+        <!-- Animate.css CDN -->
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+            />
+
+        <style>
+        /* Style for the dropdown */
+        .dropdown-toggle.btn-dropdown {
+            background-color: #fff;
+            /* Set the background color */
+            border: 1px solid #ddd;
+            /* Set the border */
+            border-radius: 4px;
+            /* Set the border radius */
+            color: #555;
+            /* Set the text color */
+            padding: 10px;
+            /* Set the padding */
+            transition: all 0.3s ease;
+            /* Add easing animation on hover and click */
+            -webkit-transition: all 0.3s ease;
+            -moz-transition: all 0.3s ease;
+        }
+
+        /* Style for the dropdown when open */
+        .dropdown-toggle.btn-dropdown:focus {
+            background-color: #f5f5f5;
+            /* Set the background color */
+            border: 1px solid #ccc;
+            /* Set the border */
+            border-radius: 4px;
+            /* Set the border radius */
+            box-shadow: none;
+            /* Remove the box shadow */
+            color: #333;
+            /* Set the text color */
+            outline: none;
+            /* Remove the outline */
+        }
+
+        /* Style for the dropdown options */
+        .dropdown-menu {
+            background-color: #fff;
+            /* Set the background color */
+            border: 1px solid #ddd;
+            /* Set the border */
+            border-radius: 4px;
+            /* Set the border radius */
+            box-shadow: none;
+            /* Remove the box shadow */
+            margin-top: 0;
+            /* Remove the margin */
+        }
+
+        /* Style for the dropdown option when hover */
+        .dropdown-item:hover {
+            background-color: #f5f5f5;
+            /* Set the background color */
+            color: #333;
+            /* Set the text color */
+        }
+
+        h1,
+        label,
+        .dropdown {
+            font-family: 'Courier New', Courier, monospace;
+        }
+    </style>
+    </head>
+
+    <body data-bs-theme="dark">
+        <div id="navbar"></div>
+        <br>
+        <div class="container">
+            <h1 class="text-center mb-4 animate_animated animate_zoomIn">Server
+                Room Statistics</h1>
+
+            <!-- HTML code for dropdown selection -->
+            <label for="node-select">Select a Node:</label>
+            <select id="node-select">
+                <!-- Default option for Node 1 -->
+
+                <!-- Use JavaScript to dynamically generate options for each node in the schema -->
+            </select>
+
+            <!-- Dropdown to select chart type -->
+            <div class="form-group">
+                <label for="chart-type">Select Chart Type:</label>
+                <div class="dropdown">
+                    <select class="form-control btn btn-dropdown
+                        dropdown-toggle" id="chart-type">
+                        <option style="font-size: large;" value="line">Line</option>
+                        <option style="font-size: large;" value="bar">Bar</option>
+                        <option style="font-size: large;" value="area">Area</option>
+                    </select>
+                </div>
+            </div>
+
+            <br>
+
+            <!-- Container for chart generated by Highcharts -->
+            <div id="chart-container" class="animate_animated animate_fadeInUp"></div>
+        </div>
+        <script>
+            // JavaScript code to generate options for each node in the schema
+ fetch('http://localhost:5000/api/nodes').then(res => {
+    if (res.status === 401) {
+      throw new Error('Not authenticated');
+    }
+    return res.json();
+  }).then(nodes => {
+
+const select = document.getElementById('node-select');
+
+nodes.forEach(node => {
+  const option = document.createElement('option');
+  option.value = node.nodeId;
+  option.textContent = node.nodeId;
+  select.appendChild(option);
+});
+
+// JavaScript code to handle user's selection
+
+});
+        </script>
+        <script>
+        // Set default chart type
+        var chartType = 'line';
+
+        // Get chart type from dropdown and update chart
+        document.getElementById('chart-type').addEventListener('change', function () {
+            chartType = this.value;
+            generateChart();
+        });
+
+        // Function to generate chart using Highcharts
+        function generateChart() {
+            const select = document.getElementById('node-select');
+            console.log(select)
+            id = 1;
+            
+
+            const API_URL = 'http://localhost:5000/api/nodeData';
+
+            // Temperature and time data
+            var temperatureData = [];
+            var timeData = [];
+
+            $.ajax({
+                type: "GET",
+                url: `${API_URL}/${id}`,
+                contentType: "application/json",
+                success: "",
+                error: function (xhr, status, error) {
+                    console.error('Error fetching data:', error);
+                }
+            }).then(response => {
+                var temperatureData = [];
+                var timeData = [];
+
+              
+
+                var ftl = timeData.filter(data => moment)
+
+                for (var i = 0; i < response[0].unixTime.length; i++) {
+                        temperatureData.push(response[0].tempSensorData[i].temp);
+                        timeData.push(response[0].unixTime[i].time);
+                }
+
+  
+
+                // Chart options based on selected chart type
+                var options = {};
+                switch (chartType) {
+                    case 'line':
+                        options = {
+                            chart: {
+                                type: 'line',
+                                borderRadius: 5
+                            },
+                            title: {
+                                text: 'Last 30 Days'
+                            },
+                            xAxis: {
+                                type: 'datetime',
+                                title: {
+                                    text: 'Time'
+                                }
+                            },
+                            yAxis: {
+                                title: {
+                                    text: 'Temperature (°C)'
+                                },
+                                min: 17, // set minimum value for y-axis
+                                max: 40, // set maximum value for y-axis
+                                tickInterval: 1 // set tick interval for y-axis
+                            },
+                            series: [{
+                                name: 'Temperature',
+                                data: temperatureData.map(function (temp, i) {
+                                    return [timeData[i], temp];
+                                }),
+                                animation: {
+                                    duration: 2000 // set animation duration in milliseconds
+                                }
+                            }]
+                        };
+                        break;
+                    case 'bar':
+                        options = {
+                            chart: {
+                                type: 'bar',
+                                borderRadius: 5
+                            },
+                            title: {
+                                text: 'Last 30 Days'
+                            },
+                            xAxis: {
+                                type: 'datetime',
+                                title: {
+                                    text: 'Time'
+                                }
+                            },
+                            yAxis: {
+                                title: {
+                                    text: 'Temperature (°C)'
+                                },
+                                min: 17, // set minimum value for y-axis
+                                max: 40, // set maximum value for y-axis
+                                tickInterval: 1 // set tick interval for y-axis
+                            },
+                            series: [{
+                                name: 'Temperature',
+                                data: temperatureData.map(function (temp, i) {
+                                    return [timeData[i], temp];
+                                }), animation: {
+                                    duration: 2000 // set animation duration in milliseconds
+                                }
+                            }]
+                        };
+                        break;
+                    case 'area':
+                        options = {
+                            chart: {
+                                type: 'area',
+                                borderRadius: 5
+                            },
+                            title: {
+                                text: 'Last 30 Days'
+                            },
+                            xAxis: {
+                                type: 'datetime',
+                                title: {
+                                    text: 'Time'
+                                }
+                            },
+                            yAxis: {
+                                title: {
+                                    text: 'Temperature (°C)'
+                                },
+                                min: 17, // set minimum value for y-axis
+                                max: 40, // set maximum value for y-axis
+                                tickInterval: 1 // set tick interval for y-axis
+                            },
+                            series: [{
+                                name: 'Temperature',
+                                data: temperatureData.map(function (temp, i) {
+                                    return [timeData[i], temp];
+                                }), animation: {
+                                    duration: 2000 // set animation duration in milliseconds
+                                }
+                            }]
+                        };
+                        break;
+                }
+
+                Highcharts.setOptions({
+                    time: {
+                        timezone: 'Asia/Kolkata'
+                    }
+                });
+
+                // Generate chart using Highcharts
+                Highcharts.chart('chart-container', options);
+            })
+        }
+
+        function updateChart()
+            {
+                const id = $('#node-select').val();
+                
+                const API_URL = 'http://localhost:5000/api/nodeData';
+
+// Temperature and time data
+var temperatureData = [];
+var timeData = [];
+
+$.ajax({
+    type: "GET",
+    url: `${API_URL}/${id}`,
+    contentType: "application/json",
+    success: "",
+    error: function (xhr, status, error) {
+        console.error('Error fetching data:', error);
+    }
+}).then(response => {
+    var temperatureData = [];
+    var timeData = [];
+
+  
+
+    var ftl = timeData.filter(data => moment)
+
+    for (var i = 0; i < response[0].unixTime.length; i++) {
+            temperatureData.push(response[0].tempSensorData[i].temp);
+            timeData.push(response[0].unixTime[i].time);
+    }
+
+
+
+    // Chart options based on selected chart type
+    var options = {};
+    switch (chartType) {
+        case 'line':
+            options = {
+                chart: {
+                    type: 'line',
+                    borderRadius: 5
+                },
+                title: {
+                    text: 'Last 30 Days'
+                },
+                xAxis: {
+                    type: 'datetime',
+                    title: {
+                        text: 'Time'
+                    }
+                },
+                yAxis: {
+                    title: {
+                        text: 'Temperature (°C)'
+                    },
+                    min: 17, // set minimum value for y-axis
+                    max: 40, // set maximum value for y-axis
+                    tickInterval: 1 // set tick interval for y-axis
+                },
+                series: [{
+                    name: 'Temperature',
+                    data: temperatureData.map(function (temp, i) {
+                        return [timeData[i], temp];
+                    }),
+                    animation: {
+                        duration: 2000 // set animation duration in milliseconds
+                    }
+                }]
+            };
+            break;
+        case 'bar':
+            options = {
+                chart: {
+                    type: 'bar',
+                    borderRadius: 5
+                },
+                title: {
+                    text: 'Last 30 Days'
+                },
+                xAxis: {
+                    type: 'datetime',
+                    title: {
+                        text: 'Time'
+                    }
+                },
+                yAxis: {
+                    title: {
+                        text: 'Temperature (°C)'
+                    },
+                    min: 17, // set minimum value for y-axis
+                    max: 40, // set maximum value for y-axis
+                    tickInterval: 1 // set tick interval for y-axis
+                },
+                series: [{
+                    name: 'Temperature',
+                    data: temperatureData.map(function (temp, i) {
+                        return [timeData[i], temp];
+                    }), animation: {
+                        duration: 2000 // set animation duration in milliseconds
+                    }
+                }]
+            };
+            break;
+        case 'area':
+            options = {
+                chart: {
+                    type: 'area',
+                    borderRadius: 5
+                },
+                title: {
+                    text: 'Last 30 Days'
+                },
+                xAxis: {
+                    type: 'datetime',
+                    title: {
+                        text: 'Time'
+                    }
+                },
+                yAxis: {
+                    title: {
+                        text: 'Temperature (°C)'
+                    },
+                    min: 17, // set minimum value for y-axis
+                    max: 40, // set maximum value for y-axis
+                    tickInterval: 1 // set tick interval for y-axis
+                },
+                series: [{
+                    name: 'Temperature',
+                    data: temperatureData.map(function (temp, i) {
+                        return [timeData[i], temp];
+                    }), animation: {
+                        duration: 2000 // set animation duration in milliseconds
+                    }
+                }]
+            };
+            break;
+    }
+
+    Highcharts.setOptions({
+        time: {
+            timezone: 'Asia/Kolkata'
+        }
+    });
+
+    // Generate chart using Highcharts
+    Highcharts.chart('chart-container', options);
+})
+            }
+
+        // Generate initial chart
+        generateChart();
+
+        setInterval(updateChart, 10000);
+    </script>
+        <!-- jQuery and Bootstrap JS -->
+        <script
+            src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+            integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+            crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <script src="/Resources/scripts/app.js" data-main="scripts/app"
+            type="text/javascript"></script>
+        <!-- Highcharts CDN
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highcharts/10.3.3/highcharts.js"
+        integrity="sha512-8cJ3Lf1cN3ld0jUEZy26UOg+A5YGLguP6Xi6bKLyYurrxht+xkLJ9oH9rc7pvNiYsmYuTvpe3wwS6LriK/oWDg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+        <!-- <script src="https://code.highcharts.com/highcharts.js"></script> -->
+        <div id="footer"></div>
+        <div id="footer"></div>
+        <script src="/Resources/scripts/app.js" data-main="scripts/app" type="text/javascript"></script>
+    </body>
+
+</html>

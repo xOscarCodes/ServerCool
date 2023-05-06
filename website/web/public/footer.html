@@ -1,0 +1,15 @@
+<script>    // To dynamically calculate the year and show it in the copyright section of the footer
+    let year =  new Date().getFullYear();
+var contentHolder = document.getElementById('year');
+contentHolder.innerHTML = year;
+</script>
+
+
+<!-- Footer to be used in all the  html pages -->
+<footer>        
+    <div class="py-4 sticky-bottom">
+        <div class="container text-center">
+            <p class="text-muted mb-0 py-2">© Temperature Automation for Server Rooms <span id="year"></span></p>
+        </div>
+    </div>
+</footer>

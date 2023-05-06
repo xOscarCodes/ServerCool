@@ -1,0 +1,19 @@
+{
+  "filters": {
+    "doShowOrphans": true
+  },
+  "groups": {
+    "groups": [
+      {
+        "query": "tag:#Pentest",
+        "color": "#be2323"
+      }
+    ]
+  },
+  "display": {
+    "nodeSize": 4,
+    "linkThickness": 5,
+    "particleSize": 6,
+    "particleCount": 4
+  }
+}

@@ -1,0 +1,7 @@
+{
+    "name": "ServerCool",
+    "version": "1.0.0",
+    "description": "List of API endpoints",
+    "title": "Server Cool API",
+    "url": "http://localhost:5000"
+}

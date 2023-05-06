@@ -1,0 +1,179 @@
+{
+  "version": 2,
+  "projects": [
+    {
+      "fieldConfig": {},
+      "defaultName": "",
+      "templates": [],
+      "excludedNotes": [],
+      "isDefault": false,
+      "dataSource": {
+        "kind": "folder",
+        "config": {
+          "path": "Software Engineering/SIT209 - Project",
+          "recursive": false
+        }
+      },
+      "newNotesFolder": "",
+      "views": [
+        {
+          "config": {},
+          "filter": {
+            "conditions": []
+          },
+          "colors": {
+            "conditions": []
+          },
+          "id": "8ead801a-e521-4c82-a3cb-dea16a45dbcf",
+          "name": "Table",
+          "type": "table"
+        },
+        {
+          "config": {},
+          "filter": {
+            "conditions": []
+          },
+          "colors": {
+            "conditions": []
+          },
+          "id": "c1f172ae-f957-4882-b542-e0c803bd16cf",
+          "name": "Board",
+          "type": "board"
+        }
+      ],
+      "id": "964daeab-e790-4ea2-ae9a-6772fa841fc8",
+      "name": "SIT209 - Project"
+    },
+    {
+      "fieldConfig": {},
+      "defaultName": "",
+      "templates": [],
+      "excludedNotes": [],
+      "isDefault": false,
+      "dataSource": {
+        "kind": "folder",
+        "config": {
+          "path": "Software Engineering/SIT209 - Project",
+          "recursive": false
+        }
+      },
+      "newNotesFolder": "",
+      "views": [
+        {
+          "config": {},
+          "filter": {
+            "conditions": []
+          },
+          "colors": {
+            "conditions": []
+          },
+          "id": "6d9c5e69-13e1-4fe6-b183-4f049dcfbcee",
+          "name": "Table",
+          "type": "table"
+        }
+      ],
+      "id": "4808fa57-ecf0-4632-8822-cd0a090e407e",
+      "name": "SIT209 - Project"
+    },
+    {
+      "fieldConfig": {},
+      "defaultName": "",
+      "templates": [],
+      "excludedNotes": [],
+      "isDefault": false,
+      "dataSource": {
+        "kind": "folder",
+        "config": {
+          "path": "Software Engineering/SIT209 - Project",
+          "recursive": false
+        }
+      },
+      "newNotesFolder": "",
+      "views": [
+        {
+          "config": {},
+          "filter": {
+            "conditions": []
+          },
+          "colors": {
+            "conditions": []
+          },
+          "id": "e2fe0f1c-bb5b-4f25-86b8-ebc9e0406bb6",
+          "name": "Table",
+          "type": "table"
+        }
+      ],
+      "id": "ef639233-28a1-454c-aed6-d820c3fb1574",
+      "name": "SIT209 - Project"
+    },
+    {
+      "fieldConfig": {},
+      "defaultName": "",
+      "templates": [],
+      "excludedNotes": [],
+      "isDefault": false,
+      "dataSource": {
+        "kind": "folder",
+        "config": {
+          "path": "Software Engineering/SIT209 - Project",
+          "recursive": false
+        }
+      },
+      "newNotesFolder": "",
+      "views": [
+        {
+          "config": {},
+          "filter": {
+            "conditions": []
+          },
+          "colors": {
+            "conditions": []
+          },
+          "id": "c1cb2299-7086-4275-ad7b-2a48ddc77980",
+          "name": "Table",
+          "type": "table"
+        }
+      ],
+      "id": "e6579b69-ae30-4598-89e7-b8c5fc802f9f",
+      "name": "SIT209 - Project"
+    },
+    {
+      "fieldConfig": {},
+      "defaultName": "",
+      "templates": [],
+      "excludedNotes": [],
+      "isDefault": false,
+      "dataSource": {
+        "kind": "folder",
+        "config": {
+          "path": "Software Engineering/SIT209 - Project",
+          "recursive": true
+        }
+      },
+      "newNotesFolder": "",
+      "views": [
+        {
+          "config": {},
+          "filter": {
+            "conditions": []
+          },
+          "colors": {
+            "conditions": []
+          },
+          "id": "a85f1ac8-44d0-48d4-adbd-b3c40b60be5f",
+          "name": "Table",
+          "type": "table"
+        }
+      ],
+      "id": "e6affa25-f5aa-42c4-8c72-d83398b9ed25",
+      "name": "SIT209 - Project"
+    }
+  ],
+  "preferences": {
+    "projectSizeLimit": 1000,
+    "frontmatter": {
+      "quoteStrings": "PLAIN"
+    },
+    "commands": []
+  }
+}

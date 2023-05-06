@@ -1,0 +1,43 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="./landing-page.html">
+            <img src="/Resources/images/Logo.ico" alt="Logo" width="30"
+                height="24" class="d-inline-block align-text-top">
+            Server <span style="color: aqua;">Cool</span>
+        </a> <button class="navbar-toggler" type="button"
+            data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page"
+                        href="./landing-page.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/dev">About Us</a>
+                </li>
+            
+            </ul>
+
+            <div>
+                <input type="checkbox" class="checkbox" id="checkbox"
+                    onClick="nightToggle()">
+                <label for="checkbox" class="label">
+                    <i class="fas fa-moon"></i>
+                    <i class='fas fa-sun'></i>
+                    <div class='ball'>
+                    </label>
+                </div>
+
+            </div>
+        </div>
+    </nav>
+    <script>
+    function nightToggle() {
+        var element = document.body;
+        element.dataset.bsTheme = element.dataset.bsTheme == "light" ? "dark" : "light";
+    }       
+</script>

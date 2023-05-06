@@ -1,0 +1,88 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="./landing-page.html">
+            <img src="/Resources/images/Logo.ico" alt="Logo" width="30"
+                height="24" class="d-inline-block align-text-top">
+            Server <span style="color: aqua;">Cool</span>
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page"
+                        href="/cards">Nodes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/dev">About Us</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#"
+                        id="navbarDropdown" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        Features
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/auditLogs">Audit Logs</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/stats">Statistics</a>
+                    </div>
+                </li>
+
+            </ul>
+
+
+
+            <a href="/users/logout" id="logoutButton" class="btn
+                btn-outline-danger"
+                style="margin-right: 5%;"><i class="fa
+                    fa-sign-out" aria-hidden="true"></i> <span id="loggout">Logout</span></a>
+            <div>
+                <input type="checkbox" class="checkbox" id="checkbox"
+                    onClick="nightToggle()">
+                <label for="checkbox" class="label">
+                    <i class="fas fa-moon"></i>
+                    <i class='fas fa-sun'></i>
+                    <div class='ball'>
+                    </label>
+                </div>
+
+            </div>
+        </div>
+    </nav>
+    <link rel="stylesheet" href="/Resources/css/style.css">
+
+    <script>
+        function nightToggle() {
+        var element = document.body;
+        element.dataset.bsTheme = element.dataset.bsTheme == "light" ? "dark" : "light";
+        }
+        document.addEventListener('DOMContentLoaded', () => {
+  // Your JavaScript code goes here
+
+        logoutext = document.getElementById("loggout");
+        $(function() {
+        fetch('/users/me')
+  .then(res => {
+    if (res.status === 401) {
+      throw new Error('Not authenticated');
+    }
+    return res.json();
+  })
+  .then(user => {
+    // Use user data
+    
+    logoutext.innerHTML = user[0].name;
+  });
+});
+});
+        </script>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />

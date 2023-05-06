@@ -1,0 +1,1286 @@
+/* AirCon Controller (Version 2.0.2)
+
+/* Universal --------------------------------------------------------------------------------------------------------- */
+
+html {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    background-color: #ffffff;
+    user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+body {
+    -webkit-tap-highlight-color: rgb(0, 0, 0);
+    margin: 0;
+    position: fixed;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+}
+
+/* Colours ------------------------------------------------------------------------------------------------------------ */
+
+.coolmain {
+    color: #46A5EE !important;
+}
+
+.coolmainbg {
+    background-color: #46A5EE !important;
+}
+
+.coolalt {
+    color: #83C3F4 !important;
+}
+
+.coolaltbg {
+    background-color: #83C3F4 !important;
+}
+
+.fanmain {
+    color: #767F87 !important;
+}
+
+.fanmainbg {
+    background-color: #767F87 !important;
+}
+
+.fanalt {
+    color: #4C5156 !important;
+}
+
+.fanaltbg {
+    background-color: #4C5156 !important;
+}
+
+.selectedcolour {
+    color: rgb(255, 255, 255) !important;
+}
+
+/* Connecting Modal ---------------------------------------------------------------------------------------------------
+
+#modal {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background: #F2F2F2;
+    text-align: center;
+    z-index: 100;
+}
+
+#modaltext {
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 1.7;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+#versiondetails {
+    position: absolute;
+    bottom: 40px;
+    left: 0;
+    right: 0;
+}
+
+#modallogo {
+    display: block;
+    width: 60px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 5px;
+}
+
+#versionnumber {
+    font-weight: 500;
+    width: 100%;
+    color: #969696;
+}
+
+#connectingpopup {
+    position: absolute;
+    width: 300px;
+    border-radius: 10px;
+    background-color: #E5E5E5;
+    margin: auto;
+    top: 40px;
+    left: 0;
+    right: 0;
+}
+
+#connectingpopup i {
+    font-size: 16pt;
+    color: #636366;
+    padding-top: 15px;
+}
+
+#popuptext {
+    font-weight: 500;
+    color: #636366;
+    padding: 15px;
+} */
+
+/* Outer -------------------------------------------------------------------------------------------------------------- */
+
+#outer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 30vw;
+    height: 100%;
+    transition: width 0.5s ease;
+}
+
+/* Left Side Status Menu ---------------------------------------------------------------------------------------------- */
+
+#sidebar {
+    display: table;
+    width: 100%;
+    height: 100%;
+    transition: all 1s ease;
+}
+
+#sidebarinformation {
+    display: table-cell;
+    height: 100%;
+    vertical-align: middle;
+}
+
+#powerbutton {
+    width: 90px;
+    height: 90px;
+    border-radius: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 110px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    transition-delay: 0.2s;
+}
+
+#powerbutton i {
+    display: block;
+    font-size: 31pt;
+    color: white;
+    text-align: center;
+    padding-top: 25px;
+}
+
+.poweroff {
+    background-color: white;
+}
+
+#temperaturecontrols {
+    display: flex;
+    flex-direction: row;
+}
+
+#decreasebox {
+    flex-grow: 0.5;
+    margin-top: 80px;
+}
+
+#decreasetemp {
+    display: block;
+    font-size: 35pt;
+    text-align: center;
+    color: white;
+    cursor: pointer;
+}
+
+#temperaturebox {
+    width: 200px;
+    height: 200px;
+}
+
+#currenttemperature {
+    text-align: center;
+    font-size: 76pt;
+    color: white;
+    padding-top: 43px;
+    padding-left: 10px;
+}
+
+#offmessage {
+    text-align: center;
+    font-size: 58pt;
+    color: white;
+    padding-top: 58px;
+}
+
+#increasebox {
+    flex-grow: 0.5;
+    margin-top: 80px;
+}
+
+#increasetemp {
+    display: block;
+    font-size: 35pt;
+    text-align: center;
+    color: white;
+    cursor: pointer;
+}
+
+.tempdisabled {
+    opacity: 0.2;
+}
+
+#otherinformation {
+    display: flex;
+    justify-content: center;
+    margin-top: 110px;
+}
+
+.statustitle {
+    font-weight: 400;
+    font-size: 14pt;
+    text-align: center;
+    color: white;
+}
+
+#currentfanspeedbox {
+    width: 150px;
+    height: 90px;
+    margin-left: 20px;
+    margin-right: 20px;
+    border-right: solid 2px #ffffff;
+}
+
+#currentfanspeedicon {
+    display: block;
+    width: 42px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 8px;
+    padding-top: 10px;
+}
+
+#currentmodebox {
+    width: 90px;
+    height: 60px;
+    margin-top: 15px;
+}
+
+.currentcoolmode {
+    content: url(../images/cool.svg);
+}
+
+.currentfanmode {
+    content: url(../images/fan.svg);
+}
+
+#currentmodebox img {
+    display: block;
+    width: 65%;
+    margin-top: 18px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#roomtemperaturebox {
+    width: 150px;
+    height: 90px;
+    margin-left: 20px;
+    margin-right: 20px;
+    border-left: solid 2px #ffffff;
+}
+
+.roomtemperature {
+    text-align: center;
+    font-size: 23pt;
+    color: white;
+    padding-top: 11px;
+}
+
+#offroomtemperature {
+    height: 90px;
+    margin-top: 110px;
+}
+
+/* Tabs --------------------------------------------------------------------------------------------------------------- */
+
+#control {
+    position: absolute;
+    width: calc(100% - 30vw);
+    height: 100%;
+    right: 0;
+}
+
+.tabbar {
+    display: flex;
+    width: 100%;
+    height: 85px;
+}
+
+.tabbox {
+    display: inline-block;
+    flex-grow: 1;
+}
+
+.tab {
+    font-weight: 600;
+    text-align: center;
+    font-size: 24pt;
+    margin-top: 22px;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+/* Control ------------------------------------------------------------------------------------------------------------ */
+
+#controlcontent {
+    overflow-y: scroll;
+    height: calc(100% - 75px);
+}
+
+.controltitle {
+    width: calc(100% - 75px);
+    font-weight: 300;
+    font-size: 15pt;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#modecontainer {
+    display: flex;
+    width: calc(100% - 75px);
+    height: 120px;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: space-between;
+}
+
+.modeselection {
+    width: 100%;
+    background-color: white;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 1s ease;
+}
+
+.modebox {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.modetitle {
+    font-weight: 600;
+    font-size: 22pt;
+    margin-left: 15px;
+    transition: all 1s ease;
+}
+
+#coolbox {
+    color: #46A5EE;
+}
+
+#coolboximg {
+    width: 37px;
+    content: url(../images/coolcoloured.svg);
+}
+
+.selectedcoolimg {
+    content: url(../images/cool.svg) !important;
+}
+
+#fanbox {
+    color: #767F87;
+}
+
+#fanboximg {
+    width: 40px;
+    content: url(../images/fancoloured.svg);
+}
+
+.selectedfanimg {
+    content: url(../images/fan.svg) !important;
+}
+
+#fanspeedcontainer {
+    display: flex;
+    width: calc(100% - 75px);
+    height: 150px;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 40px;
+    justify-content: space-between;
+}
+
+.fanspeedselection {
+    display: flex;
+    width: 32%;
+    background-color: white;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    border-radius: 8px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.fanspeedbox {
+    display: flex;
+    height: 60%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.autoicon {
+    position: relative;
+    margin-top: -2px;
+    height: 53%;
+}
+
+.autocircle {
+    width: 60px;
+    content: url(../images/circle.svg);
+}
+
+.selectedautocircle {
+    content: url(../images/circle.svg);
+}
+
+
+#autofan {
+    position: absolute;
+    content: url(../images/fancoloured.svg);
+    width: 26px;
+    top: 12.6px;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.fanicon {
+    display: flex;
+    height: 44%;
+}
+
+.fanspeedicon {
+    width: 40px;
+    height: 40px;
+    content: url(../images/fancoloured.svg);
+}
+
+.selectedfanspeed,
+.selectedautofan {
+    content: url(../images/fan.svg) !important;
+}
+
+.arrowbox {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin-left: 7px;
+}
+
+.arrowbox i {
+    font-size: 12pt;
+    color: #767F87;
+}
+
+.fanspeedtitle {
+    font-weight: 600;
+    font-size: 18pt;
+    color: #767F87;
+    margin-top: 15px;
+}
+
+/* Submit Button -------------------------------------------------------------------------------------------------------------------------*/
+#submit-btn {
+    background-color: #46A5EE;
+    border: none;
+    color: white;
+    padding: 12px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-size: 16px;
+    margin-top: 30px !important;
+    cursor: pointer;
+    margin: 0 auto;
+    width: 150px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+#submit-btn:hover {
+    background-color: #246ea7;
+}
+
+/* Timer Slider--------------------------------------------------------------------------------------------------------------------------------------- */
+.timer-slider {
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+}
+
+.slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 20px;
+    background: #ccc;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 10px;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 30px;
+    height: 30px;
+    background: #46A5EE;
+    /* Blue color */
+    cursor: pointer;
+    border-radius: 50%;
+    border: 1px solid #46A5EE;
+    /* Blue color */
+}
+
+.slider::-moz-range-thumb {
+    width: 30px;
+    height: 30px;
+    background: #46A5EE;
+    /* Blue color */
+    cursor: pointer;
+    border-radius: 50%;
+    border: 1px solid #46A5EE;
+    /* Blue color */
+}
+
+
+.slider-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.slider-labels span {
+    flex: 1;
+    font-size: 14px;
+    color: #999;
+    font-weight: bold;
+}
+
+/* Zones --------------------------------------------------------------------------------------------------------------
+
+.link {
+    background: #E5E5E5;
+    color: #818181 !important;
+}
+
+.link:hover {
+    cursor: pointer;
+    background: #CCCCCC;
+}
+
+#zonecontent {
+    overflow-y: scroll;
+    height: calc(100% - 75px);
+}
+
+.lastzone {
+    margin-bottom: 50px;
+}
+
+.zonebox {
+    width: calc(100% - 75px);
+    height: 100px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+    position: relative;
+}
+
+.zoneboxnight {
+    background-color: #333333;
+}
+
+.zonetitle {
+    font-weight: 500;
+    font-size: 20pt;
+    padding-top: 32px;
+    margin-left: 20px;
+}
+
+.zonestatus {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 20pt;
+    color: black;
+    height: 100%;
+}
+
+.zonestate {
+    position: absolute;
+    top: 32px;
+    left: 100px;
+    font-size: 30px;
+    width: 100px;
+    text-align: center;
+}
+
+.zonedisabled {
+    color: #AFAFAF;
+    height: 100%;
+    line-height: 100px;
+    margin-right: 40px;
+}
+
+.zoneincrease,
+.zonedecrease {
+    display: inline-block;
+    font-size: 45px;
+    width: 100px;
+    text-align: center;
+}
+
+.zonedecrease {
+    margin-right: 100px;
+}
+
+.zoneincrease i,
+.zonedecrease i {
+    line-height: 100px;
+} */
+
+/* @media Rules for Width --------------------------------------------------------------------------------------------- */
+
+@media only screen and (max-width: 1768px) {
+    #outer {
+        width: 490px;
+    }
+
+    #control,
+    #zones {
+        width: calc(100% - 490px);
+    }
+}
+
+@media only screen and (max-width: 1199px) {
+
+    #outer {
+        width: 390px;
+    }
+
+    #control,
+    #zones {
+        width: calc(100% - 390px);
+    }
+
+
+    #temperaturebox {
+        width: 150px;
+        height: 150px;
+        border-radius: 150px;
+    }
+
+    #temperaturecontrols {
+        width: 390px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #currenttemperature {
+        font-size: 58pt;
+        padding-top: 38px;
+    }
+
+    #offmessage {
+        padding-top: 39px;
+    }
+
+    #increasebox,
+    #decreasebox {
+        margin-top: 60px;
+    }
+
+    #currentfanspeedbox,
+    #roomtemperaturebox {
+        width: 120px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .othertitle {
+        margin-top: 10px;
+        font-size: 14pt;
+    }
+
+}
+
+@media (min-height: 690px) and (max-width: 999px) {
+
+    #outer,
+    #sidebar,
+    #sidebarinformation {
+        display: block;
+        width: 100%;
+        height: 500px;
+    }
+
+    #sidebarinformation {
+        padding-top: 38px;
+        zoom: 1 !important;
+    }
+
+    #control,
+    #zones {
+        margin-top: 500px;
+        width: 100%;
+    }
+
+    #powerbutton,
+    #temperaturecontrols,
+    #modebox {
+        margin: auto;
+    }
+
+    #otherinformation,
+    #offroomtemperature,
+    #temperaturecontrols {
+        margin-top: 45px;
+    }
+
+    #modebox {
+        margin-top: 10px;
+    }
+
+    #controlcontent,
+    #zonecontent {
+        height: calc(100% - 584px);
+    }
+
+    #currentfanspeedbox,
+    #roomtemperaturebox {
+        width: 150px;
+        margin-left: 25px;
+        margin-right: 25px;
+    }
+
+    .statustitle {
+        font-size: 16pt;
+    }
+
+}
+
+@media (max-height: 800px) and (max-width: 1000px) {
+
+    body {
+        zoom: 0.8;
+    }
+
+    #sidebarinformation {
+        zoom: 0.85;
+    }
+
+    .fanspeedbox {
+        zoom: 1.2;
+    }
+
+    #connectingpopup {
+        zoom: 1.25;
+    }
+
+
+}
+
+@media only screen and (max-width: 750px) {
+
+    #fanspeedcontainer {
+        flex-wrap: wrap;
+        height: 348.85px;
+    }
+
+    .fanspeedselection {
+        width: 48%;
+        height: 43%;
+    }
+
+    #mediumselection,
+    #highselection {
+        margin-top: 3vw;
+    }
+
+}
+
+@media (max-width: 610px) and (max-height: 690px) {
+
+    .controltitle {
+        font-size: 17pt !important;
+    }
+}
+
+@media only screen and (max-width: 610px) {
+
+    body {
+        zoom: 0.6;
+    }
+
+    .controltitle {
+        font-size: 19pt;
+        margin-bottom: 20px;
+    }
+
+    .fanspeedbox {
+        zoom: 1.2;
+    }
+
+    .zonebox {
+        height: 175px;
+    }
+
+    .zonetitle {
+        text-align: center;
+        margin-left: 0;
+    }
+
+    .zonestatus {
+        display: flex;
+        position: relative;
+        height: auto;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .zoneincrease,
+    .zonedecrease {
+        width: 25%;
+        margin-right: 0;
+    }
+
+    .zonestate {
+        position: relative;
+        width: 50%;
+        font-size: 30pt;
+        top: 0;
+        left: 0;
+    }
+
+    .zonedisabled {
+        font-size: 30pt;
+        justify-content: center !important;
+        margin-right: 0;
+    }
+
+    #connectingpopup {
+        zoom: 1.6;
+    }
+
+    #modaltext {
+        font-size: 55px;
+    }
+
+    #versiondetails {
+        bottom: 55px;
+    }
+
+    #modallogo {
+        width: 80px;
+    }
+
+    #versionnumber {
+        font-size: 16pt;
+    }
+}
+
+@media only screen and (max-width: 370px) {
+
+    #modecontainer {
+        flex-wrap: wrap;
+        height: 400px;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .controltitle {
+        text-align: center;
+    }
+
+    .modeselection {
+        width: 100%;
+        height: 120px;
+    }
+
+    #mediumselection,
+    #highselection {
+        margin-top: -3vw;
+    }
+
+}
+
+/* @media Rules for Different Heights --------------------------------------------------------------------------------- */
+
+@media (max-width: 1180px) and (min-height: 800px) {
+
+    #outer,
+    #sidebar,
+    #sidebarinformation {
+        display: block;
+        width: 100%;
+        height: 500px;
+    }
+
+    #sidebarinformation {
+        padding-top: 38px;
+    }
+
+    #control,
+    #zones {
+        margin-top: 500px;
+        width: 100%;
+    }
+
+    #powerbutton,
+    #temperaturecontrols,
+    #modebox {
+        margin: auto;
+    }
+
+    #otherinformation,
+    #offroomtemperature,
+    #temperaturecontrols {
+        margin-top: 45px;
+    }
+
+    #modebox {
+        margin-top: 10px;
+    }
+
+    #controlcontent,
+    #zonecontent {
+        height: calc(100% - 584px);
+    }
+}
+
+@media (min-width: 1200px) and (min-height: 800px) {
+
+    #powerbutton {
+        margin-bottom: 20vh;
+    }
+
+    #otherinformation,
+    #offroomtemperature {
+        margin-top: 20vh;
+    }
+}
+
+@media (max-width: 1100px) and (max-height: 690px) {
+
+    #currenttemperature {
+        padding-top: 38px !important;
+    }
+
+}
+
+@media (max-width: 690px) and (max-height: 610px) {
+
+    #outer,
+    #sidebar,
+    #sidebarinformation {
+        height: 450px !important;
+    }
+
+    #powerbutton {
+        width: 60px;
+        height: 60px;
+        border-radius: 15px;
+        margin-top: 30px;
+        margin-bottom: 7vh;
+    }
+
+    #powerbutton i {
+        font-size: 22pt;
+        padding-top: 17px;
+    }
+
+    #temperaturebox {
+        width: 150px;
+        height: 150px;
+    }
+
+    #currenttemperature {
+        font-size: 55pt;
+        padding-top: 60px;
+    }
+
+    #otherinformation,
+    #offroomtemperature {
+        margin-top: 14vh;
+    }
+
+    #currentfanspeedbox,
+    #roomtemperaturebox {
+        height: 70px;
+    }
+
+    #currentmodebox img {
+        width: 50%;
+        margin-top: 13px;
+    }
+
+    .statustitle {
+        font-size: 12pt;
+        margin-top: 2px;
+    }
+
+    #roomtemperature {
+        font-size: 18pt;
+    }
+
+    #control,
+    #zones {
+        margin-top: 450px !important;
+    }
+
+}
+
+@media (max-width: 840px) and (max-height: 690px) {
+
+    #modecontainer {
+        flex-wrap: wrap;
+        width: calc(100% - 65px);
+        height: 400px;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .controltitle {
+        text-align: center;
+    }
+
+    .modeselection {
+        width: 100%;
+        height: 120px;
+    }
+
+    #mediumselection,
+    #highselection {
+        margin-top: -1vw;
+    }
+
+    #fanspeedcontainer {
+        flex-wrap: wrap;
+        height: 348.85px;
+    }
+
+    .fanspeedselection {
+        width: 48%;
+        height: 43%;
+    }
+
+    .zonebox {
+        height: 175px;
+    }
+
+    .zonetitle {
+        font-size: 17pt;
+        text-align: center;
+        margin-left: 0;
+    }
+
+    .zonestatus {
+        display: flex;
+        position: relative;
+        height: auto;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .zoneincrease,
+    .zonedecrease {
+        width: 25%;
+        margin-right: 0;
+    }
+
+    .zonestate {
+        position: relative;
+        width: 50%;
+        font-size: 30pt;
+        top: 0;
+        left: 0;
+    }
+
+    .zonedisabled {
+        font-size: 30pt;
+        justify-content: center !important;
+        margin-right: 0;
+    }
+
+    #fanspeedcontainer {
+        padding-bottom: 20px;
+    }
+
+}
+
+@media (min-width: 690px) and (max-height: 560px) {
+
+    body {
+        zoom: 0.8;
+    }
+
+    .controltitle {
+        font-size: 17pt;
+    }
+
+}
+
+@media (max-width: 690px) and (max-height: 690px) {
+
+    #outer,
+    #sidebar,
+    #sidebarinformation {
+        display: block;
+        width: 100%;
+        height: 500px;
+        zoom: 1;
+    }
+
+    #sidebarinformation {
+        padding-top: 38px;
+    }
+
+    #control,
+    #zones {
+        margin-top: 500px;
+        width: 100%;
+    }
+
+    #powerbutton,
+    #temperaturecontrols,
+    #modebox {
+        margin: auto;
+    }
+
+    #otherinformation,
+    #offroomtemperature,
+    #temperaturecontrols {
+        margin-top: 45px;
+    }
+
+    #modebox {
+        margin-top: 10px;
+    }
+
+    #controlcontent,
+    #zonecontent {
+        height: calc(100% - 535px);
+    }
+
+}
+
+/* @media for Colour Schemes ------------------------------------------------------------------------------------------ */
+
+@media (prefers-color-scheme: dark) {
+
+    html,
+    #modal {
+        background-color: #323232;
+    }
+
+    #modaltext,
+    .selected>.tab,
+    .controltitle,
+    .zonetitle,
+    .zonestatus {
+        color: white;
+    }
+
+    #sidebar {
+        background-color: #212121 !important;
+    }
+
+    .cooldark {
+        color: #46A5EE !important;
+    }
+
+    .heatdark {
+        color: #EE8F46 !important;
+    }
+
+    .fandark {
+        color: #767F87 !important;
+    }
+
+    .coolaltbg {
+        background-color: #46A5EE !important;
+    }
+
+
+    .fanaltbg {
+        background-color: #767F87 !important;
+    }
+
+    .currentcoolmode {
+        content: url(../images/coolcoloured.svg);
+    }
+
+    .currentfanmode {
+        content: url(../images/fancoloured.svg);
+    }
+
+    .link>.tab {
+        color: #9E9E9E;
+    }
+
+    .link {
+        background-color: #3C3C3C;
+    }
+
+    .link:hover {
+        background-color: #505050;
+    }
+
+    .modeselection,
+    .fanspeedselection,
+    .zonebox {
+        background-color: #232323;
+    }
+
+    .fanspeedtitle,
+    .arrowbox i {
+        color: white;
+    }
+
+    .fanspeedicon,
+    #autofan {
+        content: url(../images/fan.svg);
+    }
+
+    .autocircle {
+        content: url(../images/circle.svg);
+    }
+
+    .zonedisabled {
+        color: #808080;
+    }
+
+}

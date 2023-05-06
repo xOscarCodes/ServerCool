@@ -1,0 +1,51 @@
+/* body {
+    background-image: url(../images/login_page_bg.jpg);
+    background-repeat: no-repeat;
+    /* Do not repeat the image */
+    /* background-size: cover; */
+    /* Resize the background image to cover the entire container */
+
+/* } */ 
+
+.project_server {
+    margin-top: 50px;
+}
+
+.project_cool {
+    color: aqua;
+}
+
+.project_info {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    font-size: 25px;
+
+}
+
+/* Adjust height and padding of input group append */
+.email-fixed {
+    height: calc(1.5em + .75rem + 2px);
+    padding: .375rem .75rem;
+
+}
+
+/* Resize card to fit form */
+.card {
+    width: 600px;
+    max-width: 100%;
+    margin: auto;
+    padding: 20px;
+    height: 490px;
+}
+
+/* Resize button to fit form */
+.signup-button {
+    width: 500px;
+    height: 50px;
+    font-size: 20px;
+    margin-left: 10px;
+}
+
+h1 {
+    font-size: 60px;
+}

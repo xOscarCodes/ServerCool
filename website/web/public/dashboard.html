@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' />
+    <link rel="apple-touch-startup-image" href="img/background.png">
+
+    
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="manifest" href="manifest.json">
+
+    <title>AirCon Controller</title>
+    <link rel="icon" type="image/x-icon" href="/Resources/images/cool.svg">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+        integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link rel="stylesheet" href="./Resources/css/dashboard.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+     <script src="/Resources/scripts/ui.js"></script>
+    <script src="/Resources/scripts/aircon.js"></script>
+    <!-- <script src="dummy.js"></script> -->
+
+
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"
+        integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script> -->
+
+</head>
+
+<body data-bs-theme="dark">
+
+    <!-- <div id="modal">
+        <div id="connectingpopup" style="display: none;">
+            <i class="fas fa-exclamation-triangle"></i>
+            <div id="popuptext">
+                Connection is taking longer than usual.
+                There could be an issue connecting to the AirCon server.
+            </div>
+        </div>
+        <div id="modaltext"></div>
+        <div id="versiondetails">
+            <img id="modallogo" src="img/airconlogoVector.svg" draggable="false">
+            <div id="versionnumber">Version 2.0.2</div>
+        </div>
+    </div> -->
+    <div id="outer">
+        <div id="sidebar" class="coolmainbg">
+            <div id="sidebarinformation">
+
+                <div id="powerbutton" class="coolaltbg">
+                    <i class="fas fa-power-off"></i>
+                </div>
+
+                <div id="temperaturecontrols">
+                    <div id="decreasebox">
+                        <i id="decreasetemp" class="fas fa-minus cooldark"></i>
+                    </div>
+                    <div id="temperaturebox">
+                        <div id="currenttemperature">17°</div>
+                        <div id="offmessage" style="display: none;">OFF</div>
+                    </div>
+                    <div id="increasebox">
+                        <i id="increasetemp" class="fas fa-plus cooldark"></i>
+                    </div>
+                </div>
+
+                <div id="otherinformation">
+                    <div id="currentfanspeedbox">
+                        <img id="currentfanspeedicon" src="/Resources/images/lowspeed.svg" draggable="false">
+                        <div id="currentfanspeed" class="statustitle">Low</div>
+                    </div>
+                    <div id="currentmodebox" class="currentcoolmode">
+                        <img src="/Resources/images/cool.svg" draggable="false">
+                    </div>
+                    <div id="roomtemperaturebox">
+                        <div class="roomtemperature" id="roomT1">23°C</div>
+                        <div class="statustitle" style="margin-top: 5px;">Room</div>
+                    </div>
+                </div>
+
+                <div id="offroomtemperature" style="display: none;">
+                    <div class="roomtemperature" id="roomT2">23°C</div>
+                    <div class="statustitle" style="margin-top: 5px;">Room</div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div id="control">
+        <div class="tabbar">
+            <div class="tabbox selected">
+                <div class="tab">Location: <span id="pageTitle" style="color: #46A5EE;">Edison</span></div>
+            </div>
+        </div>
+        <div id="controlcontent">
+            <div id="controlcontainer">
+                <div class="controltitle" style="margin-top: 30px">Mode:</div>
+                <div id="modecontainer">
+                    <div class="modeselection coolmainbg" id="coolselection">
+                        <div id="coolbox" class="modebox selectedcolour">
+                            <div id="coolboximg" class="selectedcoolimg"></div>
+                            <div class="modetitle">Cool</div>
+                        </div>
+                    </div>
+
+                    <!-- <div class="modeselection" id="fanselection">
+                        <div id="fanbox" class="modebox">
+                            <div id="fanboximg"></div>
+                            <div class="modetitle">Fan</div>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+            <div class="controltitle" style="margin-top: 40px;">Fan Speed:</div>
+            <div id="fanspeedcontainer">
+                <!-- <div class="fanspeedselection" id="fan0">
+                    <div class="fanspeedbox">
+                        <div class="autoicon">
+                            <div id="icon0" class="autocircle"></div>
+                            <div id="autofan"></div>
+                        </div>
+                        <div class="fanspeedtitle" style="margin-top: 8px;">Auto</div>
+                    </div>
+                </div> -->
+                <div class="fanspeedselection coolmainbg" id="fan1">
+                    <div class="fanspeedbox">
+                        <div class="fanicon">
+                            <div id="icon1" class="fanspeedicon selectedfanspeed"></div>
+                            <div class="arrowbox">
+                                <i class="fas fa-arrow-right selectedcolour"></i>
+                            </div>
+                        </div>
+                        <div class="fanspeedtitle selectedcolour">Low</div>
+                    </div>
+                </div>
+                <div class="fanspeedselection" id="fan2">
+                    <div class="fanspeedbox">
+                        <div class="fanicon">
+                            <div id="icon2" class="fanspeedicon"></div>
+                            <div class="arrowbox">
+                                <i class="fas fa-arrow-right"></i>
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                        </div>
+                        <div class="fanspeedtitle">Medium</div>
+                    </div>
+                </div>
+                <div class="fanspeedselection" id="fan3">
+                    <div class="fanspeedbox">
+                        <div class="fanicon">
+                            <div id="icon3" class="fanspeedicon"></div>
+                            <div class="arrowbox">
+                                <i class="fas fa-arrow-right"></i>
+                                <i class="fas fa-arrow-right"></i>
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                        </div>
+                        <div class="fanspeedtitle">High</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timer-slider">
+                <input type="range" min="0" max="4" value="1" class="slider" id="timer-range" autocomplete="off">
+                <div class="slider-labels">
+                    <span>3 Hrs</span>
+                    <span>6 Hrs</span>
+                    <span>9 Hrs</span>
+                    <span>12 Hrs</span>
+                    <span>24 Hrs</span>
+                </div>
+            </div>
+
+            <div class="submit-btn">
+                <button id="submit-btn">SUBMIT</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- <div id="zones">
+        <div class="tabbar">
+            <div id="controllink" class="tabbox link">
+                <div class="tab">Control</div>
+            </div>
+            <div class="tabbox selected">
+                <div class="tab">Zones</div>
+            </div>
+        </div>
+        <div id="zonecontent">
+        </div>
+    </div> -->
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
+
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+    crossorigin="anonymous"></script>
+
+</html>
