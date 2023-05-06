@@ -13,7 +13,7 @@ To ensure data privacy, the audit logs, which contain the login information of u
 Another feature allows users to decode infrared (IR) signals from an air conditioner remote using an IR receiver and store the dataset in the Node. These stored signals can then be transmitted to the air conditioner's IR receiver, enabling users to activate specific commands. The transmission frequency can be adjusted to accommodate various appliances. This functionality provides a convenient and efficient method for remotely controlling the air conditioning system and managing the server room's temperature.
 
 
-#### Deployment Documentation: [Deployment](./Documentation/Documentation.md)
+#### User Manual and Setup Guide: [Documentation](./Documentation/Documentation.md)
 
 ## Tech Stack
 ### Front-end
