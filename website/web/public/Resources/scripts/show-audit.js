@@ -1,11 +1,11 @@
-const API_URL = 'http://localhost:5000/api/node';
+const API_URL = 'http://<API-IP>:5000/api/node';
 const API_URL_TEST = `${API_URL}s`;
 
 
 $(document).ready(async function () {
     // Make AJAX request to fetch data from the API
     await $.ajax({
-        url: 'http://localhost:5000/api/audits',
+        url: 'http://<API-IP>:5000/api/audits',
         method: 'GET',
         success: function (response) {
             // Loop through the data and append rows to the table body

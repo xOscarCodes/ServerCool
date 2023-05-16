@@ -139,7 +139,7 @@
         </div>
         <script>
             // JavaScript code to generate options for each node in the schema
- fetch('http://localhost:5000/api/nodes').then(res => {
+ fetch('http://<API-IP>:5000/api/nodes').then(res => {
     if (res.status === 401) {
       throw new Error('Not authenticated');
     }
@@ -176,7 +176,7 @@ nodes.forEach(node => {
             id = 1;
             
 
-            const API_URL = 'http://localhost:5000/api/nodeData';
+            const API_URL = 'http://<API-IP>:5000/api/nodeData';
 
             // Temperature and time data
             var temperatureData = [];
@@ -325,7 +325,7 @@ nodes.forEach(node => {
             {
                 const id = $('#node-select').val();
                 
-                const API_URL = 'http://localhost:5000/api/nodeData';
+                const API_URL = 'http://<API-IP>:5000/api/nodeData';
 
 // Temperature and time data
 var temperatureData = [];

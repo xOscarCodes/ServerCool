@@ -17,8 +17,8 @@
 #include <IRsend.h>
 #include <LiquidCrystal_I2C.h>
 
-const String nodeId = "1";
-const String location = "Edison";
+const String nodeId = "ID";
+const String location = "LOC";
 const int oneWireBus = 32;
 const int irBlasterPin = 25;
 const int siren = 26;
@@ -45,7 +45,7 @@ String ACtemp = "";
 
 const uint16_t port_number = 1883;
 
-String domain_name_str = "172.16.20.56";
+String domain_name_str = "<MQTT-BROKER-IP-ADDRESS>";
 char domain_name[50];
 
 String publish_topic_str = "/node/temp" + nodeId;

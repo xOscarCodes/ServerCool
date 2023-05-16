@@ -12,8 +12,8 @@ model = Sequential()
 ac_temp = ""
 ac_fan = ""
 
-username = "<USERNAME>"
-password = "<PASSWORD>"
+username = "<MQTT-USERNAME>"
+password = "<MQTT-PASSWORD>"
 
 def train():
     print("training")

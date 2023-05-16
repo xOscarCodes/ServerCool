@@ -3,8 +3,8 @@ const nodeValue = urlParams.get('node');
 const node = "Node " + nodeValue;
 const times = ["3", "6", "9", "12", "24"];
 document.title = node + " AC Controller";
-let mqttURI = 'http://localhost:5001/send-command';
-const API_URL = `http://localhost:5000/api/nodes/${nodeValue}`;
+let mqttURI = 'http://<MQTT-API-IP>:5001/send-command';
+const API_URL = `http://<API-IP>:5000/api/nodes/${nodeValue}`;
 
 
 // fetch data from MongoDB

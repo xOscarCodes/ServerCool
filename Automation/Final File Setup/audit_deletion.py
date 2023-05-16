@@ -5,9 +5,6 @@ import datetime
 
 # choose one day of month for data deletion
 
-username = "<USERNAME>"
-password = "<PASSWORD>"
-
 date_of_deletion = 21
 
 connection_string = "mongodb://<USERNAME>:<PASSWORD>@<IP>:<PORT>/?authSource=admin"

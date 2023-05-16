@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:5000/api/node';
+const API_URL = 'http://<API-IP>:5000/api/node';
 const API_URL_TEST = `${API_URL}s`;
 
 // fetch data from MongoDB
