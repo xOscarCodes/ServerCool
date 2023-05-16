@@ -1,10 +1,10 @@
 **Git clone the entire repository**
 
 ```bash
-
+git clone https://github.com/xOscarCodes/ServerCool.git
 ```
 
-**Change directories**
+**Change directory**
 
 ```bash
 cd /website/api/config
